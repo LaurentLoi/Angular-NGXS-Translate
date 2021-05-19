@@ -1,3 +1,28 @@
-<p>
-  cats works!
-</p>
+<div class="container" *ngIf="cats$ | async as cats">
+  <div class="row">
+    <div class="col-2"></div>
+
+    <div class="col-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Owner ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of cats">
+            <td>{{ cat.id }}</td>
+            <td>{{ cat.name }}</td>
+            <td>{{ cat.age }}</td>
+            <td>{{ cat.ownerId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-2"></div>
+  </div>
+</div>

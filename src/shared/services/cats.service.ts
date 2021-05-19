@@ -11,6 +11,8 @@ export class CatsService {
   constructor() {}
 
   getAllCats(): Observable<CatModel[]> {
+    console.log('GET ALL CATS');
+
     return of(CATS);
   }
 

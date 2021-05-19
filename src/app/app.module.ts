@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxsModule } from '@ngxs/store';
 
 import { environment } from './../environments/environment.prod';
+import { CatsState } from './../shared/store/states/cats.state';
 import { CatsModule } from './../views/cats/cats.module';
 import { HomeModule } from './../views/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +18,9 @@ import { containersApp } from './containers';
     AppRoutingModule,
     HomeModule,
     CatsModule,
-    NgxsModule.forRoot([], { developmentMode: !environment.production }),
+    NgxsModule.forRoot([CatsState], {
+      developmentMode: !environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
