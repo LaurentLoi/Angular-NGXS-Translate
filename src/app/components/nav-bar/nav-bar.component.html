@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand link-secondary"
+      routerLink="/index"
+      (click)="selectLink('index')"
+      >Angular Demo - NGXS</a
+    >
+    <button
+      class="navbar-toggler btn__menu"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <!--  mx-auto mb-2 mb-lg-0 w-100 justify-content-around -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="home-link"
+            aria-current="page"
+            [routerLink]="['/index']"
+            (click)="selectLink('/index')"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="cats-link"
+            routerLink="/cats"
+            (click)="selectLink('/cats')"
+            >Cats</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="users-link"
+            routerLink="/users"
+            (click)="selectLink('/users')"
+            >Users</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
