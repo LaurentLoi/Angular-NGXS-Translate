@@ -1,17 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { USERS } from 'src/app/mocks/mock-users';
+import { environment } from 'src/environments/environment';
 
-import { UserModel } from '../interfaces/user.model.ts';
+import { iUsersDTO, UserModel } from '../interfaces/user.model.ts';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getAllUsers(): Observable<UserModel[]> {
-    return of(USERS);
+  getAllUsers(): Observable<iUsersDTO> {
+    return this.http.get<iUsersDTO>(environment.baseUrl + 'users');
   }
 
   getUserById(id: number): Observable<UserModel> | null {

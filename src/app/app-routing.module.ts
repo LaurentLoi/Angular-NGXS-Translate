@@ -12,9 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../views/cats/cats.module').then((m) => m.CatsModule),
   },
-  // {
-  //   path: 'users',
-  // },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('../views/users/users.module').then((m) => m.UsersModule),
+  },
   {
     path: '',
     redirectTo: 'index',

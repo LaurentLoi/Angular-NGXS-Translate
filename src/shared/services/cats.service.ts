@@ -13,9 +13,7 @@ export class CatsService {
   constructor(private http: HttpClient) {}
 
   getAllCats(): Observable<iCatsDTO> {
-    console.log('GET ALL CATS');
-
-    return this.http.get<iCatsDTO>(environment.baseUrl);
+    return this.http.get<iCatsDTO>(environment.baseUrl + 'cats');
   }
 
   getCatById(id: number): Observable<CatModel> | null {

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="cats$ | async as cats">
+<div class="container" *ngIf="users$ | async as users">
   <div class="row">
     <div class="col-2"></div>
 
@@ -9,16 +9,17 @@
             <th>ID</th>
             <th>Name</th>
             <th>Age</th>
-            <th>Owner name</th>
+            <th>Owner ID</th>
           </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let cat of cats$ | async">
-            <tr (click)="print(cat.id)">
-              <td>{{ cat.id }}</td>
-              <td>{{ cat.name }}</td>
-              <td>{{ cat.age }}</td>
-              <td>{{ cat.owner?.name }}</td>
+          <ng-container *ngFor="let user of users">
+            <tr (click)="print(user.id)">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.lang }}</td>
+              <td>{{ user.catsIdList }}</td>
             </tr>
           </ng-container>
         </tbody>

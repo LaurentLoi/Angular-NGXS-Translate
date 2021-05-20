@@ -5,3 +5,7 @@ export interface UserModel {
   lang: string;
   catsIdList: number[];
 }
+
+export interface iUsersDTO {
+  users: UserModel[];
+}

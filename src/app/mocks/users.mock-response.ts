@@ -1,18 +1,18 @@
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { CatModel } from './../../shared/interfaces/cat.model.ts';
-import { CATS } from './mock-cats';
+import { UserModel } from './../../shared/interfaces/user.model.ts';
+import { USERS } from './mock-users';
 
-export const mockCatsRes: any = (
+export const mockUsersRes: any = (
   request: HttpRequest<any>
 ): Observable<HttpResponse<any>> => {
-  const data: CatModel[] = CATS;
+  const data: UserModel[] = USERS;
 
   if (request.method === 'GET') {
     const response: any = {
       status: 200,
-      body: { cats: data },
+      body: { users: data },
     };
 
     return of(new HttpResponse(response));
