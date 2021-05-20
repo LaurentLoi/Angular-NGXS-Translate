@@ -1,19 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { CATS } from '../../app/mocks/mock-cats';
-import { CatModel } from '../interfaces/cat.model.ts';
+import { CatModel, iCatsDTO } from '../interfaces/cat.model.ts';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CatsService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getAllCats(): Observable<CatModel[]> {
+  getAllCats(): Observable<iCatsDTO> {
     console.log('GET ALL CATS');
 
-    return of(CATS);
+    return this.http.get<iCatsDTO>(environment.baseUrl);
   }
 
   getCatById(id: number): Observable<CatModel> | null {

@@ -1,8 +1,10 @@
-import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CatModel } from 'src/shared/interfaces/cat.model.ts';
+import { GetAllCats } from 'src/shared/store/actions/cats.actions';
+
+import { CatsState } from './../../../../shared/store/states/cats.state';
 
 @Component({
   selector: 'app-cats',
@@ -10,11 +12,13 @@ import { CatModel } from 'src/shared/interfaces/cat.model.ts';
   styleUrls: ['./cats.component.sass'],
 })
 export class CatsComponent implements OnInit {
-  cats$: Observable<CatModel[]>;
+  @Select(CatsState.cats) public cats$: Observable<CatModel[]>;
 
-  constructor(private store: Store) {
-    this.cats$ = this.store.select((state) => state.cats.cats);
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    this.store.dispatch(new GetAllCats());
+    this.cats$.subscribe((cats) => console.log(cats));
+    // console.log(this.store.selectOnce((state) => state.cats));
   }
-
-  ngOnInit() {}
 }

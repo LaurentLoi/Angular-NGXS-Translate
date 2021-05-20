@@ -4,3 +4,7 @@ export interface CatModel {
   age: number;
   ownerId: number;
 }
+
+export interface iCatsDTO {
+  cats: CatModel[];
+}
