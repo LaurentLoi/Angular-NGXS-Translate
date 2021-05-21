@@ -13,6 +13,7 @@ export const environment: any = {
       cats: true,
     },
   },
+  defaultLang: 'en',
 };
 
 /*

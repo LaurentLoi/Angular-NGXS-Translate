@@ -1,6 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { UsersAndCatsState } from 'src/shared/store/states/users-cats.state';
@@ -18,6 +20,8 @@ import { componentsApp } from './components';
 import { containersApp } from './containers';
 import { httpInterceptorProviders } from './interceptors';
 
+export const createTranslateLoader = (http: HttpClient): TranslateHttpLoader =>
+  new TranslateHttpLoader(http, './assets/locales/', '.json');
 @NgModule({
   declarations: [AppComponent, ...componentsApp, ...containersApp],
   imports: [
@@ -31,6 +35,13 @@ import { httpInterceptorProviders } from './interceptors';
       developmentMode: !environment.production,
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

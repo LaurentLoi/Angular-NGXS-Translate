@@ -9,4 +9,7 @@ export const environment = {
       cats: false,
     },
   },
+  defaultLang: 'en',
+  lang: ['en', 'fr', 'nl'],
+  langNames: ['English', 'Français', 'Nederlands'],
 };

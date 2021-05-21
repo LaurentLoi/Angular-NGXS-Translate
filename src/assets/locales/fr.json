@@ -1,0 +1,17 @@
+{
+  "NAV": {
+    "LINK1": "Accueil",
+    "LINK2": "Chats",
+    "LINK3": "Utilisateurs",
+    "LINK4": "Langue"
+  },
+  "HOME": {
+    "TITLE": "Angular Démo - NGXS / Translate"
+  },
+  "CATS": {
+    "TITLE": "Présentation des chats"
+  },
+  "USERS": {
+    "TITLE": "Présentation des utilisateurs"
+  }
+}

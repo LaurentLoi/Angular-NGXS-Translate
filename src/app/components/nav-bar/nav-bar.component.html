@@ -21,28 +21,52 @@
             class="nav-link"
             id="home-link"
             aria-current="page"
-            [routerLink]="['/index']"
+            [routerLink]="['/index'] | localize"
             routerLinkActive="active-link"
-            >Home</a
+            >{{ "NAV.LINK1" | translate }}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
             id="cats-link"
-            routerLink="/cats"
+            [routerLink]="['/cats'] | localize"
             routerLinkActive="active-link"
-            >Cats</a
+            >{{ "NAV.LINK2" | translate }}</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
             id="users-link"
-            routerLink="/users"
+            [routerLink]="['/users'] | localize"
             routerLinkActive="active-link"
-            >Users</a
+            >{{ "NAV.LINK3" | translate }}</a
           >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {{ "NAV.LINK4" | translate }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ng-container *ngFor="let lang of langs">
+              <button
+                class="dropdown-item btn btn dark"
+                href="#"
+                (click)="useLanguage(lang.shortName)"
+              >
+                {{ lang.name }}
+              </button>
+            </ng-container>
+          </div>
         </li>
       </ul>
     </div>
