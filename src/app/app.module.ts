@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { UsersAndCatsState } from 'src/shared/store/states/users-cats.state';
 import { UsersModule } from 'src/views/users/users.module';
 
 import { environment } from './../environments/environment.prod';
+import { CacheState } from './../shared/store/states/cache.state';
 import { CatsState } from './../shared/store/states/cats.state';
 import { UsersState } from './../shared/store/states/users.state';
 import { CatsModule } from './../views/cats/cats.module';
@@ -25,7 +27,7 @@ import { httpInterceptorProviders } from './interceptors';
     HomeModule,
     CatsModule,
     UsersModule,
-    NgxsModule.forRoot([CatsState, UsersState], {
+    NgxsModule.forRoot([CatsState, UsersState, CacheState, UsersAndCatsState], {
       developmentMode: !environment.production,
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),

@@ -10,6 +10,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Owner ID</th>
+            <th>Cats</th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +20,9 @@
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.lang }}</td>
-              <td>{{ user.catsIdList }}</td>
+              <td>
+                <span *ngFor="let cat of user.catsList">{{ cat.name }} </span>
+              </td>
             </tr>
           </ng-container>
         </tbody>

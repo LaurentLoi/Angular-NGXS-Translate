@@ -3,10 +3,10 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { GetAllCats } from 'src/shared/store/actions/cats.actions';
+import { UsersAndCatsState } from 'src/shared/store/states/users-cats.state';
 
 import { iCatWithOwner } from './../../../../shared/interfaces/cat.model.ts';
 import { GetAllUsers } from './../../../../shared/store/actions/users.action';
-import { CatsState } from './../../../../shared/store/states/cats.state';
 
 @Component({
   selector: 'app-cats',
@@ -14,13 +14,17 @@ import { CatsState } from './../../../../shared/store/states/cats.state';
   styleUrls: ['./cats.component.sass'],
 })
 export class CatsComponent implements OnInit {
-  @Select(CatsState.cats) public cats$: Observable<iCatWithOwner[]>;
+  @Select(UsersAndCatsState.catsWithOwner) public cats$: Observable<
+    iCatWithOwner[]
+  >;
 
   constructor(private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(new GetAllUsers());
     this.store.dispatch(new GetAllCats());
+
+    // this.store.dispatch(new GetAllCatsWithUsers());
     // console.log(this.store.selectOnce((state) => state.cats));
   }
 
